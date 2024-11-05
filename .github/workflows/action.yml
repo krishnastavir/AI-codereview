@@ -1,0 +1,20 @@
+name: "AI Code Reviewer"
+description: "A GitHub Action that reviews code using AI."
+inputs:
+  GITHUB_TOKEN:
+    description: "GitHub token for authentication"
+    required: true
+  OPENAI_API_KEY:
+    description: "OpenAI API key for AI model access"
+    required: true
+  OPENAI_API_MODEL:
+    description: "Model to use for AI reviews"
+    required: false
+    default: "gpt-4"
+  exclude:
+    description: "File patterns to exclude from review"
+    required: false
+    default: "**/*.json, **/*.md"
+runs:
+  using: "node12"
+  main: "dist/index.js" # Path to your main script file
