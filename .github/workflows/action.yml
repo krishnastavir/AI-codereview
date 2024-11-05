@@ -15,6 +15,4 @@ inputs:
     description: "File patterns to exclude from review"
     required: false
     default: "**/*.json, **/*.md"
-runs:
-  using: "node12"
-  main: "dist/index.js" # Path to your main script file
+
