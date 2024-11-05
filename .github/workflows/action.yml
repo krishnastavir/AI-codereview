@@ -1,6 +1,6 @@
 # action.yml
 name: "AI Code Reviewer"
-description: "An AI-powered code review GitHub Action."
+description: "A GitHub Action for code review using AI without an external JavaScript file."
 inputs:
   GITHUB_TOKEN:
     description: "GitHub token for authentication"
@@ -17,5 +17,13 @@ inputs:
     required: false
     default: "**/*.json, **/*.md"
 runs:
-  using: "node12"
-  main: "dist/index.js"
+  using: "composite"
+  steps:
+    - name: Print Hello World
+      shell: bash
+      run: |
+        echo "Hello, World!"
+        echo "GITHUB_TOKEN is ${{ inputs.GITHUB_TOKEN }}"
+        echo "OPENAI_API_KEY is ${{ inputs.OPENAI_API_KEY }}"
+        echo "Using model: ${{ inputs.OPENAI_API_MODEL }}"
+        echo "Exclude patterns: ${{ inputs.exclude }}"
