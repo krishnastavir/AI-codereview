@@ -1,13 +1,21 @@
 # action.yml
-name: "Hello World Action"
-description: "A simple GitHub Action that prints Hello, World!"
+name: "AI Code Reviewer"
+description: "An AI-powered code review GitHub Action."
 inputs:
   GITHUB_TOKEN:
     description: "GitHub token for authentication"
     required: true
-outputs:
-  greeting:
-    description: "The greeting message output by the action"
+  OPENAI_API_KEY:
+    description: "OpenAI API key for AI model access"
+    required: true
+  OPENAI_API_MODEL:
+    description: "Model to use for AI reviews (e.g., gpt-4)"
+    required: false
+    default: "gpt-4"
+  exclude:
+    description: "File patterns to exclude from review"
+    required: false
+    default: "**/*.json, **/*.md"
 runs:
   using: "node12"
   main: "dist/index.js"
